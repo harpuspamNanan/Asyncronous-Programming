@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,22 +17,33 @@ namespace AsyncronousProgramming
         {
                 // Task helps multi-tasking
             Console.WriteLine("Downloading....");
-            ToDownload();
-            
+            DownloadFromRealWebsite();         
 
             Console.ReadLine();
         }
 
-        static void ToDownload()
+        static async Task ToDownloadAsync()
         {
-            // Run helps making the work pssible in those Sleep operation
-            Task.Run( ()=>  {
-                Thread.Sleep(2500);
-                Console.WriteLine("Completed.");
-                }
-            );
-            
+            await Network.ToDownload();
+            Console.WriteLine("Completed");               
+        }
+
+        static async void DownloadFromRealWebsite()
+        {
+            HttpClient client = new HttpClient();
+            var data =  await client.GetStringAsync("https://github.com/hps3103?tab=repositories");
+            Console.WriteLine("\nDownload Completed." + data);
         }
         
+    }
+
+    class Network
+    {
+        static public Task ToDownload()
+        {
+            return Task.Run(() => {
+                Thread.Sleep(2500);                
+            });
+        }
     }
 }
