@@ -11,23 +11,25 @@ namespace AsyncronousProgramming
 {
     class Program
     {
-        static ConcurrentDictionary<int, int> items = new ConcurrentDictionary<int, int>();
-        // Cant use a normal Dictionary because then the key for 2 sets would be same, which is not possible
 
         static void Main(string[] args)
         {
-            Thread thread1 = new Thread(new ThreadStart(AddItem));
-            Thread thread2 = new Thread(new ThreadStart(AddItem));
-
-            thread1.Start();
-            thread2.Start();
+            bool[] preload = new bool[3] { true, true, false };
+            BitArray enemyGrid = new BitArray(preload);
+            foreach (var item in enemyGrid)
+            {
+                Console.WriteLine(item);
+            }
             Console.ReadLine();
+            
+           
+            //enemyGrid[0] = false;
+            //enemyGrid[1] = true;
+            //enemyGrid.Set(2, false);        // Just another way to store a value
+
+
         }
 
-        static void AddItem()
-        {
-            items.TryAdd(1, 2);
-            Console.WriteLine(items.Count);
-        }
+        
     }
 }
