@@ -14,19 +14,13 @@ namespace AsyncronousProgramming
 
         static void Main(string[] args)
         {
-            //     FiFo      -       First In First Out
-            Queue<int> myQueue = new Queue<int>();
-            myQueue.Enqueue(1);
-            myQueue.Enqueue(2);         // Insertion
-            myQueue.Enqueue(3);
+            var myHash = new HashSet<string>();         // Reomves Redundancy from the data
 
-            foreach (var item in myQueue)
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine(myQueue.Dequeue());  // MOves to the First Item and Remove it
-            Console.WriteLine(myQueue.Peek());
+            myHash.Add("hi");
+            myHash.Add("hi");
+            string[] s = new string[] { "hi" };
+            Console.WriteLine(myHash.Count );
+            Console.WriteLine(myHash.Overlaps(s));      // Overlaps checks if the input from another field has similarity or not
 
             Console.ReadLine();
         }
