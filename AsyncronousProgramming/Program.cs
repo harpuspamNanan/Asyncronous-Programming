@@ -14,20 +14,20 @@ namespace AsyncronousProgramming
 
         static void Main(string[] args)
         {
-                               //     LiFo      -       Last In First Out
-            Stack<string> plate = new Stack<string>();
-            plate.Push("First Plate");
-            plate.Push("Second Plate");
-            plate.Push("Third Plate");
+            //     FiFo      -       First In First Out
+            Queue<int> myQueue = new Queue<int>();
+            myQueue.Enqueue(1);
+            myQueue.Enqueue(2);         // Insertion
+            myQueue.Enqueue(3);
 
-            //foreach (var item in plate)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            Console.WriteLine(plate.Pop());
-            // Removes the Last Item
-            Console.WriteLine(plate.Peek());
-            Console.WriteLine(plate.Peek());
+            foreach (var item in myQueue)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine(myQueue.Dequeue());  // MOves to the First Item and Remove it
+            Console.WriteLine(myQueue.Peek());
+
             Console.ReadLine();
         }
 
