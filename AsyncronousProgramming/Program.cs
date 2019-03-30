@@ -24,10 +24,10 @@ namespace AsyncronousProgramming
 
        
 
-        static void ToDownload()
+        static void Download()
         {
             // Using Lambda Function
-            Network.ToDownload( ()=> Console.WriteLine("\nDownload Completed" ));
+            Network.ToDownload((message)=> Console.WriteLine("\nDownload Completed" + message));
         }
 
 
@@ -36,11 +36,11 @@ namespace AsyncronousProgramming
 
     class Network
     {
-        static public Task ToDownload(Action callback) // Action treats it as a delegate
+        static public Task ToDownload(Action<string> callback) // Action treats it as a delegate
         {
             return Task.Run(() => {
                 Thread.Sleep(2500);
-                callback();
+                callback("Completed");
             });
         }
     }
