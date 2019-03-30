@@ -9,22 +9,29 @@ using System.Threading.Tasks;
 
 namespace AsyncronousProgramming
 {
-    class Stack
+    class Program
     {
 
         static void Main(string[] args)
         {
-            var myHash = new HashSet<string>();         // Reomves Redundancy from the data
-
-            myHash.Add("hi");
-            myHash.Add("hi");
-            string[] s = new string[] { "hi" };
-            Console.WriteLine(myHash.Count );
-            Console.WriteLine(myHash.Overlaps(s));      // Overlaps checks if the input from another field has similarity or not
+                // Task helps multi-tasking
+            Console.WriteLine("Downloading....");
+            ToDownload();
+            
 
             Console.ReadLine();
         }
 
+        static void ToDownload()
+        {
+            // Run helps making the work pssible in those Sleep operation
+            Task.Run( ()=>  {
+                Thread.Sleep(2500);
+                Console.WriteLine("Completed.");
+                }
+            );
+            
+        }
         
     }
 }
