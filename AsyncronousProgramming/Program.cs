@@ -17,32 +17,30 @@ namespace AsyncronousProgramming
         {
                 // Task helps multi-tasking
             Console.WriteLine("Downloading....");
-            DownloadFromRealWebsite();         
+            ToDownload();    
 
             Console.ReadLine();
         }
 
-        static async Task ToDownloadAsync()
+       
+
+        static void ToDownload()
         {
-            await Network.ToDownload();
-            Console.WriteLine("Completed");               
+            // Using Lambda Function
+            Network.ToDownload( ()=> Console.WriteLine("\nDownload Completed" ));
         }
 
-        static async void DownloadFromRealWebsite()
-        {
-            HttpClient client = new HttpClient();
-            var data =  await client.GetStringAsync("https://github.com/hps3103?tab=repositories");
-            Console.WriteLine("\nDownload Completed." + data);
-        }
-        
+
+
     }
 
     class Network
     {
-        static public Task ToDownload()
+        static public Task ToDownload(Action callback) // Action treats it as a delegate
         {
             return Task.Run(() => {
-                Thread.Sleep(2500);                
+                Thread.Sleep(2500);
+                callback();
             });
         }
     }
