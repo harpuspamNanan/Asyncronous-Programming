@@ -14,20 +14,14 @@ namespace AsyncronousProgramming
 
         static void Main(string[] args)
         {
-            bool[] preload = new bool[3] { true, true, false };
-            BitArray enemyGrid = new BitArray(preload);
-            foreach (var item in enemyGrid)
-            {
-                Console.WriteLine(item);
-            }
-            Console.ReadLine();
-            
-           
-            //enemyGrid[0] = false;
-            //enemyGrid[1] = true;
-            //enemyGrid.Set(2, false);        // Just another way to store a value
+            // Tuple<int, string, bool> myTuple = new Tuple<int, string, bool>(1, "Hello", true);
+
+           var a = Tuple.Create(1, "Create", true);
+           Console.WriteLine(a.Item2);
 
 
+
+           Console.ReadLine();
         }
 
         
