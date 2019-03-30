@@ -9,19 +9,26 @@ using System.Threading.Tasks;
 
 namespace AsyncronousProgramming
 {
-    class Program
+    class Stack
     {
 
         static void Main(string[] args)
         {
-            // Tuple<int, string, bool> myTuple = new Tuple<int, string, bool>(1, "Hello", true);
+                               //     LiFo      -       Last In First Out
+            Stack<string> plate = new Stack<string>();
+            plate.Push("First Plate");
+            plate.Push("Second Plate");
+            plate.Push("Third Plate");
 
-           var a = Tuple.Create(1, "Create", true);
-           Console.WriteLine(a.Item2);
-
-
-
-           Console.ReadLine();
+            //foreach (var item in plate)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            Console.WriteLine(plate.Pop());
+            // Removes the Last Item
+            Console.WriteLine(plate.Peek());
+            Console.WriteLine(plate.Peek());
+            Console.ReadLine();
         }
 
         
